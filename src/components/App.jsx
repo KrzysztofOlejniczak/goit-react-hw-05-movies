@@ -2,7 +2,7 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 import { Home } from './Home/Home';
 import { Movies } from './Movies/Movies';
 import { Reviews } from './Reviews/Reviews';
-import { Cast } from './Cast/Cast';
+import { Credits } from './Credits/Credits';
 
 export const App = () => {
   return (
@@ -14,7 +14,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies/:movieId" element={<Movies />}>
-          <Route path="cast" element={<Cast />} />
+          <Route path="cast" element={<Credits />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
         {/* <Route path="/products" element={<Products />} /> */}
