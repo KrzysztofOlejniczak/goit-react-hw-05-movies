@@ -1,8 +1,9 @@
 import { MovieList } from 'components/MovieList/MovieList';
 import { getTrending } from 'services/api';
 import { useEffect, useState } from 'react';
+import styles from './Home.module.css';
 
-export const Home = () => {
+const Home = () => {
   const getTrendingList = async () => {
     const movies = await getTrending();
     setTrendingList(movies.data.results);
@@ -16,8 +17,10 @@ export const Home = () => {
 
   return (
     <>
-      <h2>Trending today:</h2>
+      <h2 className={styles.heading}>Trending today:</h2>
       <MovieList list={trendingList} />
     </>
   );
 };
+
+export default Home;

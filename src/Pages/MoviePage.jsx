@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { getMovieInfo } from 'services/api';
 import posterPlaceholder from '../img/poster-placeholder.png';
-import { MovieDetail } from '../components/Movies/MovieDetail';
+import { MovieDetail } from '../components/MovieDetail/MovieDetail';
+import styles from './MoviePage.module.css';
 
-export const MoviePage = () => {
+const MoviePage = () => {
   const location = useLocation();
 
   const [backLocation, setBackLocation] = useState('/');
@@ -49,9 +50,11 @@ export const MoviePage = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <>
+    <div className={styles.container}>
       <Link to={backLocation}>
-        <button type="button">Go back</button>
+        <button className={styles.btn} type="button">
+          Go back
+        </button>
       </Link>
       <MovieDetail
         title={title}
@@ -62,6 +65,8 @@ export const MoviePage = () => {
         genres={genres}
         movieId={movieId}
       />
-    </>
+    </div>
   );
 };
+
+export default MoviePage;

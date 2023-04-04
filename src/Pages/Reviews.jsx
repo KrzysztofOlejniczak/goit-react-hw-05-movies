@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { getMovieReviews } from 'services/api';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useOutletContext();
   const [reviews, setReviews] = useState([]);
   const getReview = async id => {
@@ -24,3 +24,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;

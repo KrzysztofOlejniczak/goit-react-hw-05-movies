@@ -2,8 +2,9 @@ import { MovieList } from 'components/MovieList/MovieList';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { searchMovie } from 'services/api';
+import styles from './SearchMovie.module.css';
 
-export const SearchMovie = () => {
+const SearchMovie = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [list, setList] = useState([]);
   const query = searchParams.get('query');
@@ -26,11 +27,15 @@ export const SearchMovie = () => {
 
   return (
     <>
-      <form onSubmit={handleSearch}>
+      <form className={styles.form} onSubmit={handleSearch}>
         <input type="text" name="Search"></input>
-        <button type="submit">Search</button>
+        <button className={styles.btn} type="submit">
+          Search
+        </button>
       </form>
       <MovieList list={list} />
     </>
   );
 };
+
+export default SearchMovie;

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { getMovieCredits } from 'services/api';
 
-export const Credits = () => {
+const Credits = () => {
   const { movieId } = useOutletContext();
   const [credits, setCredits] = useState([]);
   const getCredits = async id => {
@@ -24,3 +24,5 @@ export const Credits = () => {
     </>
   );
 };
+
+export default Credits;
