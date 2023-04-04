@@ -6,12 +6,14 @@ import { MovieDetail } from '../components/Movies/MovieDetail';
 
 export const MoviePage = () => {
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
 
+  const [backLocation, setBackLocation] = useState('/');
   const [title, setTitle] = useState('');
-  const [year, setYear] = useState('');
+  const [year, setYear] = useState(null);
   const [score, setScore] = useState(0);
-  const [overview, setOverview] = useState('');
+  const [overview, setOverview] = useState(
+    `This movie doesn't have a plot outline yet.`
+  );
   const [poster, setPoster] = useState(posterPlaceholder);
   const [genres, setGenres] = useState([]);
 
@@ -19,11 +21,14 @@ export const MoviePage = () => {
 
   const getMovieDetail = async id => {
     const movie = await getMovieInfo(id);
-    // console.log(movie.data);
     setTitle(movie.data.title);
-    setYear(new Date(movie.data.release_date).getFullYear().toString());
+    if (movie.data.release_date !== '') {
+      setYear(new Date(movie.data.release_date).getFullYear().toString());
+    }
     setScore(movie.data.vote_average);
-    setOverview(movie.data.overview);
+    if (movie.data.overview !== '') {
+      setOverview(movie.data.overview);
+    }
     if (movie.data.poster_path) {
       setPoster(`https://image.tmdb.org/t/p/w500${movie.data.poster_path}`);
     }
@@ -38,9 +43,14 @@ export const MoviePage = () => {
   useEffect(() => {
     getMovieDetail(movieId);
   }, [movieId]);
+
+  useEffect(() => {
+    setBackLocation(location.state?.from ?? '/');
+    // eslint-disable-next-line
+  }, []);
   return (
     <>
-      <Link to={backLinkHref}>
+      <Link to={backLocation}>
         <button type="button">Go back</button>
       </Link>
       <MovieDetail

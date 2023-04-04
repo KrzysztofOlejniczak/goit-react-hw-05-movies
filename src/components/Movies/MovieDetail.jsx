@@ -14,7 +14,7 @@ export const MovieDetail = ({
       <img src={poster} alt={`${title} poster`} />
       <div>
         <h1>
-          {title} {year.length > 0 && `(${year})`}
+          {title} {year && `(${year})`}
         </h1>
         <p>User score: {Math.round(score * 10)}%</p>
         <h2>Overview:</h2>

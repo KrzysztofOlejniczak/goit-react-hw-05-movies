@@ -21,11 +21,24 @@ const getMovieReviews = async (id, page = 1) => {
   return response;
 };
 
-const getMovieCredits = async (id, page = 1) => {
+const getMovieCredits = async id => {
   const response = axios.get(
     `movie/${id}/credits?api_key=${API_KEY}&language=en-US`
   );
   return response;
 };
 
-export { getTrending, getMovieInfo, getMovieReviews, getMovieCredits };
+const searchMovie = async query => {
+  const response = axios.get(
+    `search/movie?api_key=${API_KEY}&language=en-US&query=${query}&include_adult=false`
+  );
+  return response;
+};
+
+export {
+  getTrending,
+  getMovieInfo,
+  getMovieReviews,
+  getMovieCredits,
+  searchMovie,
+};
