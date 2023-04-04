@@ -1,24 +1,11 @@
-import { TrendingItem } from 'components/TrendingItem/TrendingItem';
-import { useState, useEffect } from 'react';
-import { getTrending } from 'services/api';
+import { ListItem } from 'components/ListItem/ListItem';
 
-export const MovieList = () => {
-  const [trendingList, setTrendingList] = useState([]);
-
-  const getTrendingList = async () => {
-    const movies = await getTrending();
-    setTrendingList(movies.data.results);
-  };
-
-  useEffect(() => {
-    getTrendingList();
-  }, []);
+export const MovieList = ({ list }) => {
   return (
     <>
-      <h2>Trending today:</h2>
       <ul>
-        {trendingList.map(el => {
-          return <TrendingItem key={el.id} id={el.id} title={el.title} />;
+        {list.map(el => {
+          return <ListItem key={el.id} id={el.id} title={el.title} />;
         })}
       </ul>
     </>

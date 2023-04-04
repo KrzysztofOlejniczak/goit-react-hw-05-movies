@@ -1,4 +1,4 @@
-import placeholder from './placeholder.png';
+import placeholder from '../../img/placeholder.png';
 
 export const Cast = ({ cast, movieId }) => {
   return (
