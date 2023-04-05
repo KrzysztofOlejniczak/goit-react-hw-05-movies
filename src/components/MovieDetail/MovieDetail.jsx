@@ -62,7 +62,7 @@ export const MovieDetail = ({
       </div>
       <div>
         <Suspense fallback={<div>Loading...</div>}>
-          <Outlet context={{ movieId }} />
+          <Outlet />
         </Suspense>
       </div>
     </div>
