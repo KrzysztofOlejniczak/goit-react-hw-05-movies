@@ -1,7 +1,25 @@
 import { Suspense } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import styles from './MovieDetail.module.css';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const StyledLink = styled(NavLink)`
+  display: block;
+  padding: 4px 15px;
+  border-radius: 5px;
+  font-size: 13px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgb(23, 156, 68);
+
+  &.active,
+  &:hover,
+  &:focus {
+    background-color: rgb(156, 23, 52);
+  }
+`;
 
 export const MovieDetail = ({
   title,
@@ -31,14 +49,14 @@ export const MovieDetail = ({
         <h3>Additional information:</h3>
         <ul className={styles.subNav}>
           <li>
-            <Link className={styles.subNavLink} to={`cast`}>
+            <StyledLink className={styles.subNavLink} to={`cast`}>
               Cast
-            </Link>
+            </StyledLink>
           </li>
           <li>
-            <Link className={styles.subNavLink} to={`reviews`}>
+            <StyledLink className={styles.subNavLink} to={`reviews`}>
               Reviews
-            </Link>
+            </StyledLink>
           </li>
         </ul>
       </div>

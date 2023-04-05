@@ -4,3 +4,9 @@
   color: black;
   cursor: pointer;
 }
+
+.link:hover,
+.link:focus {
+  color: rgb(156, 23, 52);
+  font-weight: 600;
+}

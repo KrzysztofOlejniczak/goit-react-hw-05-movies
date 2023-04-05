@@ -1,13 +1,13 @@
 import { Cast } from 'components/Cast/Cast';
 import { Spinner } from 'components/Spinner/Spinner';
 import { useEffect, useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getMovieCredits } from 'services/api';
 
 const Credits = () => {
-  const { movieId } = useOutletContext();
   const [credits, setCredits] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { movieId } = useParams();
 
   const getCredits = async id => {
     setIsLoading(true);

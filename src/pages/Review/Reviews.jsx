@@ -1,11 +1,11 @@
 import { ReviewsList } from 'components/ReviewsList/ReviewsList';
 import { Spinner } from 'components/Spinner/Spinner';
 import { useEffect, useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'services/api';
 
 const Reviews = () => {
-  const { movieId } = useOutletContext();
+  const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 

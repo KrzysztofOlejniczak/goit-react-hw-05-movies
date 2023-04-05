@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { getMovieInfo } from 'services/api';
-import posterPlaceholder from '../img/poster-placeholder.png';
-import { MovieDetail } from '../components/MovieDetail/MovieDetail';
+import posterPlaceholder from '../../img/poster-placeholder.png';
+import { MovieDetail } from '../../components/MovieDetail/MovieDetail';
 import styles from './MoviePage.module.css';
 import { Spinner } from 'components/Spinner/Spinner';
 
@@ -55,10 +55,8 @@ const MoviePage = () => {
   }, []);
   return (
     <div className={styles.container}>
-      <Link to={backLocation}>
-        <button className={styles.btn} type="button">
-          Go back
-        </button>
+      <Link className={styles.backLink} to={backLocation}>
+        Go back
       </Link>
       <MovieDetail
         title={title}

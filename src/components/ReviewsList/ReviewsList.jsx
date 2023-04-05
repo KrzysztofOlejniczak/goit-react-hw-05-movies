@@ -1,3 +1,4 @@
+import { ParsedHtml } from 'components/ParsedHtml/ParsedHtml';
 import styles from './ReviewsList.module.css';
 import PropTypes from 'prop-types';
 
@@ -7,7 +8,9 @@ export const ReviewsList = ({ reviews, movieId }) => {
       {reviews.map((review, index) => (
         <li className={styles.item} key={`${movieId}r${index + 1}`}>
           <h4 className={styles.author}>{review.author}</h4>
-          <p className={styles.review}>{review.content}</p>
+          <div className={styles.review}>
+            <ParsedHtml toParse={review.content} />
+          </div>
         </li>
       ))}
     </ul>
