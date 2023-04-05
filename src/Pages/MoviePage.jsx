@@ -4,6 +4,7 @@ import { getMovieInfo } from 'services/api';
 import posterPlaceholder from '../img/poster-placeholder.png';
 import { MovieDetail } from '../components/MovieDetail/MovieDetail';
 import styles from './MoviePage.module.css';
+import { Spinner } from 'components/Spinner/Spinner';
 
 const MoviePage = () => {
   const location = useLocation();
@@ -16,11 +17,13 @@ const MoviePage = () => {
     `This movie doesn't have a plot outline yet.`
   );
   const [poster, setPoster] = useState(posterPlaceholder);
-  const [genres, setGenres] = useState([]);
+  const [genres, setGenres] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const { movieId } = useParams();
 
   const getMovieDetail = async id => {
+    setIsLoading(true);
     const movie = await getMovieInfo(id);
     setTitle(movie.data.title);
     if (movie.data.release_date !== '') {
@@ -39,6 +42,7 @@ const MoviePage = () => {
       movieGenre = [...movieGenre, genre.name];
       return setGenres(movieGenre.join(' '));
     });
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -65,6 +69,7 @@ const MoviePage = () => {
         genres={genres}
         movieId={movieId}
       />
+      {isLoading && <Spinner />}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import placeholder from '../../img/placeholder.png';
 import styles from './Cast.module.css';
+import PropTypes from 'prop-types';
 
 export const Cast = ({ cast, movieId }) => {
   return (
@@ -27,4 +28,15 @@ export const Cast = ({ cast, movieId }) => {
       ))}
     </ul>
   );
+};
+
+Cast.propTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      profile_path: PropTypes.string,
+      name: PropTypes.string.isRequired,
+      character: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+  movieId: PropTypes.string.isRequired,
 };

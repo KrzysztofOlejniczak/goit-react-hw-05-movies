@@ -2,7 +2,6 @@ import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styles from './SharedLayout.module.css';
 import styled from 'styled-components';
-import { Spinner } from 'components/Spinner/Spinner';
 
 const StyledLink = styled(NavLink)`
   display: block;
@@ -36,7 +35,7 @@ export const SharedLayout = () => {
         </nav>
       </div>
       <div className={styles.container}>
-        <Suspense fallback={<Spinner />}>
+        <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
       </div>

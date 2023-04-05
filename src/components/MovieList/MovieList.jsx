@@ -1,5 +1,6 @@
 import { ListItem } from 'components/ListItem/ListItem';
 import styles from './MovieList.module.css';
+import PropTypes from 'prop-types';
 
 export const MovieList = ({ list }) => {
   return (
@@ -11,4 +12,13 @@ export const MovieList = ({ list }) => {
       </ul>
     </>
   );
+};
+
+MovieList.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
 };

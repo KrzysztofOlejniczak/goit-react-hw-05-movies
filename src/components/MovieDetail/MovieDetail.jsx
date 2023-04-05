@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import styles from './MovieDetail.module.css';
-import { Spinner } from 'components/Spinner/Spinner';
+import PropTypes from 'prop-types';
 
 export const MovieDetail = ({
   title,
@@ -43,10 +43,20 @@ export const MovieDetail = ({
         </ul>
       </div>
       <div>
-        <Suspense fallback={<Spinner />}>
+        <Suspense fallback={<div>Loading...</div>}>
           <Outlet context={{ movieId }} />
         </Suspense>
       </div>
     </div>
   );
+};
+
+MovieDetail.propTypes = {
+  title: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
+  year: PropTypes.string,
+  score: PropTypes.number.isRequired,
+  overview: PropTypes.string.isRequired,
+  genres: PropTypes.string.isRequired,
+  movieId: PropTypes.string.isRequired,
 };
