@@ -5,14 +5,16 @@
 
 .infoBox {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .poster {
   display: block;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
-  height: 400px;
+  max-width: 300px;
+  height: auto;
+  max-height: 450px;
 }
 
 .info {
@@ -37,3 +39,9 @@
   text-decoration: none;
   background-color: rgb(23, 156, 68);
 }
+
+@media screen and (min-width: 720px) {
+  .infoBox {
+    flex-direction: row;
+  }
+} ;
